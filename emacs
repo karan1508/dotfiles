@@ -38,6 +38,7 @@ dra/.cabal/bin" (getenv "PATH")))
                       flycheck
                       gist
                       graphviz-dot-mode
+                      grizzl
                       magit
                       marmalade
 		      monokai-theme
@@ -49,10 +50,12 @@ dra/.cabal/bin" (getenv "PATH")))
                       projectile
                       restclient
                       rvm
+                      switch-window
                       scala-mode
                       smex
                       sml-mode
                       solarized-theme
+                      sr-speedbar
                       web-mode
                       writegood-mode
                       )
@@ -97,7 +100,7 @@ dra/.cabal/bin" (getenv "PATH")))
 ;; Yes and No
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-
+;;Miscellaneous
 (global-set-key (kbd "RET") 'newline-and-indent)
 (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -204,6 +207,35 @@ dra/.cabal/bin" (getenv "PATH")))
 
 ;;Projectile mode
 (projectile-global-mode)
+(setq projectile-completion-system 'grizzl)
+
+;;Setting for CEDET
+(global-ede-mode 1)
+(require 'semantic/sb)
+(semantic-mode 1)
+
+;;Speedbar shortcuts
+(global-set-key (kbd "C-c o") 'sr-speedbar-open)
+(global-set-key (kbd "C-c c") 'sr-speedbar-close)
+
+;;Company mode
+(add-hook 'after-init-hook 'global-company-mode)
+(with-eval-after-load 'company
+  (setq company-backends (delete 'company-semantic company-backends))
+  (add-to-list 'company-backends 'company-c-headers))
+
+(with-eval-after-load 'c-mode
+  (define-key c-mode-map  [(tab)] 'company-complete))
+(with-eval-after-load 'c++-mode
+  (define-key c++-mode-map  [(tab)] 'company-complete))
+
+;;Setup Semantic
+;;To enable code completion using Semantic
+(require 'cc-mode)
+(require 'semantic)
+
+(global-semanticdb-minor-mode 1)
+(global-semantic-idle-scheduler-mode 1)
 
 ;;Python anaconda-mode hook
 (add-hook 'python-mode-hook 'anaconda-mode)
