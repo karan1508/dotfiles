@@ -32,6 +32,7 @@ dra/.cabal/bin" (getenv "PATH")))
 		      company
 		      company-anaconda
 		      company-c-headers
+		      color-theme-sanityinc-tomorrow
 		      dark-mint-theme
 		      feature-mode
                       flycheck
@@ -39,7 +40,9 @@ dra/.cabal/bin" (getenv "PATH")))
                       graphviz-dot-mode
                       magit
                       marmalade
-                      o-blog
+		      monokai-theme
+		      zenburn-theme
+		      o-blog
                       org
                       paredit
                       puppet-mode
