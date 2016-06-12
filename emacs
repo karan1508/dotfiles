@@ -26,24 +26,24 @@ dra/.cabal/bin" (getenv "PATH")))
 
 (defvar kd/packages '(ac-slime
                       ace-jump-mode
-		      anaconda-mode
+                      anaconda-mode
                       auto-complete
                       autopair
-		      company
-		      company-anaconda
-		      company-c-headers
-		      color-theme-sanityinc-tomorrow
-		      dark-mint-theme
-		      feature-mode
+                      company
+                      company-anaconda
+                      company-c-headers
+                      color-theme-sanityinc-tomorrow
+                      dark-mint-theme
+                      feature-mode
                       flycheck
                       gist
                       graphviz-dot-mode
                       grizzl
                       magit
                       marmalade
-		      monokai-theme
-		      zenburn-theme
-		      o-blog
+                      monokai-theme
+                      zenburn-theme
+                      o-blog
                       org
                       paredit
                       puppet-mode
@@ -57,6 +57,7 @@ dra/.cabal/bin" (getenv "PATH")))
                       solarized-theme
                       sr-speedbar
                       web-mode
+                      wanderlust
                       writegood-mode
                       )
   "Default packages")
@@ -190,7 +191,7 @@ dra/.cabal/bin" (getenv "PATH")))
 ;; conf mode
 (add-to-list 'auto-mode-alist '("\\.gitconfig$" . conf-mode))
 
-(load-theme 'dark-mint t)
+(load-theme 'zenburn t)
 
 ;;Switch window
 (global-set-key (kbd "C-M-z") 'switch-window)
@@ -248,3 +249,9 @@ dra/.cabal/bin" (getenv "PATH")))
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 
+
+
+;; wanderlust
+(autoload 'wl "wl" "Wanderlust" t)
+(autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
+(autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
