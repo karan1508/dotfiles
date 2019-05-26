@@ -38,6 +38,8 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-surround'
+Plugin 'nvie/vim-flake8'
+Plugin 'alessandroyorba/arcadia'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,3 +82,6 @@ set tabstop=4
 :iabbrev @@ karandewan@gmail.com
 :vnoremap <leader>/ :call NERDComment(0, "toggle")<CR>
 :nnoremap <leader>/ :call NERDComment(0, "toggle")<CR>
+
+let g:arcadia_Midnight = 1
+:colorscheme arcadia
