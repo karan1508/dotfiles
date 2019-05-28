@@ -17,6 +17,8 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'python/black'
+Plugin 'klen/python-mode'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -85,3 +87,6 @@ set tabstop=4
 
 let g:arcadia_Midnight = 1
 :colorscheme arcadia
+
+" run black on python files
+autocmd BufWritePre *.py execute ':Black'
