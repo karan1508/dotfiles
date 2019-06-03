@@ -8,6 +8,7 @@
 
 (setq package-list '(evil
 		     org-bullets
+		     evil-easymotion
 		     evil-collection
 		     projectile
 		     elpy
@@ -71,7 +72,7 @@
 
 ;; Set default font
 (set-face-attribute 'default nil
-		    :family "Source Code pro"
+		    :family "Source Code Pro"
 		    :height 110
 		    :weight 'normal
 		    :width 'normal)
@@ -87,28 +88,34 @@
 (require 'helm-projectile)
 (helm-projectile-on)
 
-
+(setq  evil-want-keybinding nil)
 (require 'evil)
 (evil-mode t)
+
 
 ;; (use-package evil-surround
 ;;   :ensure t
 ;;   :config
 ;;   (global-evil-surround-mode 1))
 
+;;evil easymotion
+(evilem-default-keybindings "SPC")
+
 (require 'evil-leader)
 (global-evil-leader-mode)
 (evil-leader/set-leader "<SPC>")
 (evil-leader/set-key
-  "b" 'helm-buffers-list
+  ;; "j" (evilem-create 'next-line)
+  "bb" 'helm-buffers-list
+  "bx" 'kill-buffer
+  "br" 'revert-buffer
+  "bs" 'save-buffer
   "ff" 'helm-recentf
-  "w" 'save-buffer
   "gs" 'magit-status
   "qer" 'restart-emacs
   "pf" 'helm-projectile-find-file
   "pp" 'helm-projectile-switch-project
   "m" 'helm-M-x
-  "wm" 'maximize-window
   "ev" (lambda() (interactive)(find-file "~/.emacs")))
 
 ;; Evil-mode
