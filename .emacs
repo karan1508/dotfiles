@@ -16,6 +16,7 @@
 		     material-theme
 		     dracula-theme
 		     helm
+		     use-package
 		     magit
 		     helm-projectile
 		     restart-emacs
@@ -78,8 +79,17 @@
 		    :width 'normal)
 
 ;; org-mode
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda() (org-bullets-mode 1)))
+(use-package org-bullets
+  :ensure t
+  :init
+  (setq org-bullets-bullet-list
+	'("◉" "◎" "⚫" "○" "►" "◇"))
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(setq org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
+(sequence "⚑ WAITING(w)" "|")
+(sequence "|" "✘ CANCELED(c)")))
 
 ;; helm
 (require 'helm-config)
@@ -92,11 +102,10 @@
 (require 'evil)
 (evil-mode t)
 
-
-;; (use-package evil-surround
-;;   :ensure t
-;;   :config
-;;   (global-evil-surround-mode 1))
+(use-package evil-surround
+  :ensure t
+  :config
+  (global-evil-surround-mode 1))
 
 ;;evil easymotion
 (evilem-default-keybindings "SPC")
