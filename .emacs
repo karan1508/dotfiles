@@ -39,7 +39,7 @@
 
 
 ;; line numbers
-(global-linum-mode t)
+(global-display-line-numbers-mode t)
 
 ;; terminal fixes
 (add-hook 'term-exec-hook
