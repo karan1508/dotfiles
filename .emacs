@@ -6,37 +6,35 @@
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-(setq package-list '(evil
-		     org-bullets
-		     evil-easymotion
-		     evil-collection
-		     projectile
-		     elpy
-		     evil-leader
-		     material-theme
+(setq package-list '(cycle-themes
 		     dashboard
-		     dracula-theme
 		     doom-themes
-		     treemacs
-		     page-break-lines
-		     treemacs-evil
+		     dracula-theme
+		     elpy
+		     evil
+		     evil-collection
+		     evil-easymotion
+		     evil-leader
+		     evil-surround
 		     helm
-		     use-package
-		     magit
+		     helm-ag
+		     helm-themes
 		     helm-projectile
+		     magit
+		     material-theme
+		     org-bullets
+		     page-break-lines
+		     projectile
+		     rainbow-delimiters
 		     restart-emacs
+		     treemacs
+		     treemacs-evil
+		     use-package
+		     whitespace
 		     yasnippet
-		     yasnippet-snippets
-		     evil-surround))
+		     yasnippet-snippets))
 
 
-;;Dashboard
-;; (require 'dashboard)
-;; (dashboard-setup-startup-hook)
-
-;; Snippet
-(require 'yasnippet)
-(yas-global-mode 1)
 
 ;;Add Melpa as the default Emacs Package repository
 ;;only contains a very limited number of packages
@@ -45,6 +43,18 @@
 
 ;;Activate all the packages (in particular autoloads)
 (package-initialize)
+
+(require 'whitespace)
+(global-whitespace-mode 1)
+
+
+;; Dashboard
+(require 'dashboard)
+(dashboard-setup-startup-hook)
+
+;; Snippet
+(require 'yasnippet)
+(yas-global-mode 1)
 
 ;;python mode
 ;; (advice-add 'python-mode :before 'elpy-enable)
@@ -81,6 +91,13 @@
 (setq recentf-max-saved-items 50)
 
 ;; eye candy
+(setq cycle-themes-theme-list
+      '(doom-spacegrey
+	doom-molokai))
+
+(require 'cycle-themes)
+(cycle-themes-mode)
+
 (load-theme 'doom-spacegrey)
 ;; (load-theme 'dracula t)
 ;; (load-theme 'material t)
@@ -91,7 +108,7 @@
 
 ;; Set default font
 (set-face-attribute 'default nil
-		    :family "Source Code Pro"
+		    :family "Hack"
 		    :height 110
 		    :weight 'normal
 		    :width 'normal)
@@ -111,6 +128,7 @@
 
 ;; helm
 (require 'helm-config)
+(require 'helm-themes)
 
 ;; projectile
 (require 'helm-projectile)
@@ -137,12 +155,16 @@
   "bx" 'kill-buffer
   "br" 'revert-buffer
   "bs" 'save-buffer
+  "bw" 'whitespace-mode
   "ff" 'helm-recentf
   "gs" 'magit-status
   "qer" 'restart-emacs
   "pf" 'helm-projectile-find-file
   "pp" 'helm-projectile-switch-project
+  "ss" 'helm-do-ag-this-file
+  "sp" 'helm-do-ag-project-root`
   "m" 'helm-M-x
+  "Ts" 'helm-themes
   "ev" (lambda() (interactive)(find-file "~/.emacs")))
 
 ;; Evil-mode
